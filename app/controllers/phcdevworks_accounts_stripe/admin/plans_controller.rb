@@ -3,11 +3,8 @@ require_dependency "phcdevworks_accounts_stripe/application_controller"
 module PhcdevworksAccountsStripe
     class Admin::PlansController < ApplicationController
 
-        # Filters
-        include PhcdevworksCore::PhcdevworksPluginsHelper
-        before_action :phcdevworks_accounts_admin_only
-
-        def plans_list
+        def admin_plan_list
+            @admin_plan_list = Stripe::Plan.list({limit: 100})
         end
     
     end

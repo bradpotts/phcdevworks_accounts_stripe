@@ -1,15 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Phcdevworks accounts stripe</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    "phcdevworks_accounts_stripe/application", media: "all" %>
+    <!-- SEO System -->
+    <% phc_seo_title "PHCDevworks Accounts" %>
+    <% phc_seo_description "Ruby on Rails 6 Authentication and User Management Engine." %>
+    <!-- SEO System -->
+
+    <!-- SEO and Site Description -->
+	<meta charset="utf-8">
+	<title><%= yield(:phc_seo_title) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="<%= yield(:phc_seo_description) %>">
+    <!-- SEO and Site Description -->
+
+    <!-- Rails Security Tags -->
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <!-- Rails Security Tags -->
+
+    <!-- CSS Styles -->
+    <%= stylesheet_link_tag "phcthemes_admin_panel_pack_coloradmin", media: "all" %>
+    <!-- CSS Styles -->
+
+    <!-- JavaScript -->
+    <%= javascript_include_tag "phcthemes_admin_panel_pack_coloradmin" %>
+    <!-- JavaScript -->
+
 </head>
 <body>
 
-<%= yield %>
+    <!-- Page Container -->
+    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+
+        <!-- Page Header -->
+        <div id="header" class="header navbar-default">
+            <%= render "layouts/phcdevworks_accounts_stripe/components/backend/navigation/top_menu" %>
+        </div>
+        <!-- Page Header -->
+
+        <!-- Page Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <%= render "layouts/phcdevworks_accounts_stripe/components/backend/sidebars/side_menu" %>
+        </div>
+        <div class="sidebar-bg"></div>
+        <!-- Page Sidebar -->
+
+        <!-- Page Content -->
+        <div id="content" class="content">
+            <%= render "phcdevworks_notifications/bootstrap/notifications" %>
+            <%= yield %>
+        </div>
+        <!-- Page Content -->
+
+        <!-- Footer Content -->
+        <div id="footer" class="footer mb-4">
+            <%= render "layouts/phcdevworks_accounts_stripe/components/backend/footer/footer" %>
+        </div>
+        <!-- Footer Content -->
+
+    </div>
+    <!-- Page Container -->
 
 </body>
 </html>
