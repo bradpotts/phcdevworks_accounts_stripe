@@ -279,6 +279,34 @@
 
         <% if defined?phcdevworks_accounts_stripe && current_user && current_user.admin %>
             <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->
+            <li class="nav-header">Invoices & Payments</li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fad fa-money-check-alt"></i>
+                    <span>Your Subscription</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/subscriptions#admin_subscription_list") %>"><%= link_to("Your Subscription", phcdevworks_accounts_stripe.admin_subscriptions_path) %></li>
+                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/plans#admin_plan_list") %>"><%= link_to("Switch Subscriptions", phcdevworks_accounts_stripe.admin_plans_path) %></li>
+                </ul>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fad fa-file-invoice"></i>
+                    <span>Your Invoices</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/customers#admin_customer_list") %>"><%= link_to("Current Invoice", phcdevworks_accounts_stripe.admin_customers_path) %></li>
+                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/customers#admin_customer_list") %>"><%= link_to("Past Invoices", phcdevworks_accounts_stripe.admin_customers_path) %></li>
+                </ul>
+            </li>
+            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->
+        <% end %>
+
+        <% if defined?phcdevworks_accounts_stripe && current_user && current_user.admin %>
+            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->
             <li class="nav-header">Stripe Admin</li>
             <li class="has-sub">
                 <a href="javascript:;">
@@ -287,7 +315,7 @@
                     <span>Subscriptions</span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/subscriptions#admin_subscription_list") %>"><%= link_to("Subscription Index", phcdevworks_accounts_stripe.admin_subscriptions_index_path) %></li>
+                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/subscriptions#admin_subscription_list") %>"><%= link_to("Subscription Index", phcdevworks_accounts_stripe.admin_subscriptions_path) %></li>
                 </ul>
             </li>
             <li class="has-sub">
@@ -297,7 +325,7 @@
                     <span>Plans</span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/plans#admin_plan_list") %>"><%= link_to("Plan List", phcdevworks_accounts_stripe.admin_plans_index_path) %></li>
+                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/plans#admin_plan_list") %>"><%= link_to("Plan List", phcdevworks_accounts_stripe.admin_plans_path) %></li>
                 </ul>
             </li>
             <li class="has-sub">
@@ -307,7 +335,7 @@
                     <span>Customers</span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/customers#admin_customer_list") %>"><%= link_to("Customer List", phcdevworks_accounts_stripe.admin_customers_index_path) %></li>
+                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/customers#admin_customer_list") %>"><%= link_to("Customer List", phcdevworks_accounts_stripe.admin_customers_path) %></li>
                 </ul>
             </li>
             <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->

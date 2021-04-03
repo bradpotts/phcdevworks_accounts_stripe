@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "phcdevworks_core", "~> 2.2"
   spec.add_dependency "phcdevworks_notifications", "~> 2.2"
   spec.add_dependency "phcdevworks_titleseo", "~> 3.2"
+  spec.add_dependency "phcdevworks_core_modules", "~> 7.1"
 
   # Frontend Dependencies
   spec.add_dependency "wicked", "~> 1.3"

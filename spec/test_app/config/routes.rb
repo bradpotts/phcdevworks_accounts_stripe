@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  mount PhcdevworksAccountsStripe::Engine => "/"
+
+# Root Test Path
+root :to => "website/pages#index"
+
+
+
+
+
+mount PhcdevworksAccountsStripe::Engine => "/"
 end

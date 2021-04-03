@@ -3,10 +3,18 @@ require_dependency "phcdevworks_accounts_stripe/application_controller"
 module PhcdevworksAccountsStripe
     class User::InvoicesController < ApplicationController
 
+        # Security Filters
+        before_action :authenticate_user!
+
         def user_invoice_list
+            @user_invoice_list = Stripe::Invoice.list({limit: 12})
+            
+            
         end
 
-        def user_invoice_open
+        def user_invoice_item
+
+            
         end
 
     end
