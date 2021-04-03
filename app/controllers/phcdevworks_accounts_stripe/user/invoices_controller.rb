@@ -7,9 +7,7 @@ module PhcdevworksAccountsStripe
         before_action :authenticate_user!
 
         def user_invoice_list
-            @user_invoice_list = Stripe::Invoice.list({limit: 12})
-            
-            
+            @user_invoice_list = Stripe::Invoice.list({customer: current_user.stripe_customer_id})
         end
 
         def user_invoice_item

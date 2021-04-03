@@ -52,8 +52,8 @@
                                     <td><%= subscription.status.capitalize %></td>
                                     <td><%= Stripe::Customer.retrieve(subscription.customer).name %></td>
                                     <td><%= Stripe::Customer.retrieve(subscription.customer).email %></td>
-                                    <td><%= Time.at(subscription.created).to_datetime.strftime("%m/%d/%Y") %></td>
-                                    <td><%= Time.at(subscription.current_period_end).to_datetime.strftime("%m/%d/%Y") %></td>
+                                    <td><%= Time.at(subscription.created).to_datetime.strftime("%B %d, %Y") %></td>
+                                    <td><%= Time.at(subscription.current_period_end).to_datetime.strftime("%B %d, %Y") %></td>
                                </tr>
 					        <% end %>
 						</tbody>
