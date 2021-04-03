@@ -38,8 +38,10 @@
 
                         <thead>
                             <tr>
-                                <th>Customer Name</th>
-                                <th>Customer Email</th>
+                                <th>Account Name</th>
+                                <th>Invoice Amount</th>
+                                <th>Invoice Paid</th>
+                                <th>Invoice Due</th>
                             </tr>
                         </thead>
 
@@ -47,7 +49,9 @@
                             <% @user_invoice_list.each do |user_invoice| %>
                                 <tr>
                                     <td><%= user_invoice.account_name %></td>
-                                    <td><%= user_invoice.currency %></td>
+                                    <td><%= '%.2f' % BigDecimal(user_invoice.amount_due/100).to_i + ' ' + user_invoice.currency.upcase %></td>
+                                    <td><%= '%.2f' % BigDecimal(user_invoice.amount_paid/100).to_i + ' ' + user_invoice.currency.upcase %></td>
+                                    <td><%= '%.2f' % BigDecimal(user_invoice.amount_remaining/100).to_i + ' ' + user_invoice.currency.upcase %></td>
                                </tr>
 					        <% end %>
 						</tbody>
