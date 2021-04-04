@@ -6,7 +6,7 @@ module PhcdevworksAccountsStripe
         # Security Filters
         before_action :authenticate_user!
 
-        def user_plan_list
+        def user_product_list
         end
 
     end
