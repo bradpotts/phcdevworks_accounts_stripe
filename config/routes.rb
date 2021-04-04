@@ -7,7 +7,7 @@ PhcdevworksAccountsStripe::Engine.routes.draw do
 
     # Admin Routes
     match "/admin/customers", to: "admin/customers#admin_customer_list", via: "get"
-    match "/admin/plans", to: "admin/plans#admin_plan_list", via: "get"
+    match "/admin/products", to: "admin/products#admin_products_list", via: "get"
     match "/admin/subscriptions", to: "admin/subscriptions#admin_subscription_list", via: "get"
 
     # Mount Routes

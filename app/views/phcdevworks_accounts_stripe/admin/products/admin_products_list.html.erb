@@ -1,6 +1,6 @@
 <!-- PHCTitleSEO Title Variables -->
-<% phc_title "Plan Manager" %>
-<% phc_title_tagline "Stripe Plan List" %>
+<% phc_title "Products Manager" %>
+<% phc_title_tagline "Stripe Products List" %>
 <% phc_breadcrumb_one "Home" %>
 <% phc_breadcrumb_two yield(:phc_title_tagline) %>
 <!-- PHCTitleSEO Title Variables -->
@@ -39,21 +39,17 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Product Code</th>
-                                <th>Amount ($)</th>
-                                <th>Currency</th>
-                                <th>Interval</th>
+                                <th>Amount Monthly</th>
+                                <th>Amount Anually</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <% @admin_plan_list.each do |plan| %>
+                            <% @admin_products_list.each do |product| %>
                                 <tr>
-                                    <td><%= plan.nickname %></td>
-                                    <td><%= plan.product %></td>
-                                    <td><%= '%.2f' % BigDecimal(plan.amount/100).to_i %></td>
-                                    <td><%= plan.currency.upcase %></td>
-                                    <td><%= plan.interval.capitalize %></td>
+                                    <td><%= product.name %></td>
+                                    <td><%= number_to_currency(Stripe::Price.list(product: product.id, recurring: {interval: "month"}).data[0].unit_amount/100) %></td>
+                                    <td><%= number_to_currency(Stripe::Price.list(product: product.id, recurring: {interval: "year"}).data[0].unit_amount/100) %></td>
                                </tr>
 					        <% end %>
 						</tbody>

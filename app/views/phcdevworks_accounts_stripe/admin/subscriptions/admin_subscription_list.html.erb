@@ -1,6 +1,6 @@
 <!-- PHCTitleSEO Title Variables -->
 <% phc_title "Subscription Manager" %>
-<% phc_title_tagline "Stripe Subscription List" %>
+<% phc_title_tagline "Stripe Subscriptions List" %>
 <% phc_breadcrumb_one "Home" %>
 <% phc_breadcrumb_two yield(:phc_title_tagline) %>
 <!-- PHCTitleSEO Title Variables -->
@@ -43,6 +43,7 @@
                                 <th>Customer Email</th>
                                 <th>Next Payment Date</th>
                                 <th>Date Created</th>
+                                <th>Amount Due</th>
                             </tr>
                         </thead>
 
@@ -54,6 +55,7 @@
                                     <td><%= Stripe::Customer.retrieve(subscription.customer).email %></td>
                                     <td><%= Time.at(subscription.created).to_datetime.strftime("%B %d, %Y") %></td>
                                     <td><%= Time.at(subscription.current_period_end).to_datetime.strftime("%B %d, %Y") %></td>
+                                    <td><%= number_to_currency(subscription.plan.amount/100) %></td>
                                </tr>
 					        <% end %>
 						</tbody>

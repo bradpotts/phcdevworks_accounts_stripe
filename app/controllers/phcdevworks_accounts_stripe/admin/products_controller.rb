@@ -1,15 +1,15 @@
 require_dependency "phcdevworks_accounts_stripe/application_controller"
 
 module PhcdevworksAccountsStripe
-    class Admin::PlansController < ApplicationController
+    class Admin::ProductsController < ApplicationController
 
         # Filters
         before_action :authenticate_user!
         include PhcdevworksCore::PhcdevworksPluginsHelper
         before_action :phcdevworks_accounts_admin_only
 
-        def admin_plan_list
-            @admin_plan_list = Stripe::Plan.list({limit: 100})
+        def admin_products_list
+            @admin_products_list = Stripe::Product.list
         end
 
     end
