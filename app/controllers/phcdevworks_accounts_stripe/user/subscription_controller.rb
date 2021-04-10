@@ -7,7 +7,7 @@ module PhcdevworksAccountsStripe
         before_action :authenticate_user!
 
         def user_subscription_item
-            @user_subscription_item = Stripe::Subscription.list({customer: current_user.stripe_customer_id})
+            @user_subscription_item = Stripe::Subscription.list({customer: current_user.payments_customer_id})
 
         end
 
