@@ -23,17 +23,17 @@ Gem::Specification.new do |spec|
   # Main Dependencies
   spec.add_dependency "rails", "~> 6.1"
   spec.add_dependency "jbuilder", "~> 2.11"
-  spec.add_dependency "paper_trail", "~> 11.1"
+  spec.add_dependency "paper_trail", "~> 12.1"
 
   # Theme Dependencies
-  spec.add_dependency "phcthemes_admin_panel_pack", "~> 4.0"
-  spec.add_dependency "phcthemes_web_theme_pack", "~> 4.0"
+  spec.add_dependency "phcthemes_admin_panel_pack", "~> 4.1"
+  spec.add_dependency "phcthemes_web_theme_pack", "~> 4.1"
 
   # Helper Dependencies
-  spec.add_dependency "phcdevworks_active_menus", "~> 2.2"
-  spec.add_dependency "phcdevworks_core", "~> 2.2"
-  spec.add_dependency "phcdevworks_notifications", "~> 2.2"
-  spec.add_dependency "phcdevworks_titleseo", "~> 3.2"
+  spec.add_dependency "phcdevworks_active_menus", "~> 2.3"
+  spec.add_dependency "phcdevworks_core", "~> 2.3"
+  spec.add_dependency "phcdevworks_notifications", "~> 2.3"
+  spec.add_dependency "phcdevworks_titleseo", "~> 3.3"
 
   # Frontend Dependencies
   spec.add_dependency "wicked", "~> 1.3"
@@ -44,17 +44,17 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mail_form", "~> 1.9"
 
   # Images & Service Support Dependencies
-  spec.add_dependency "aws-sdk-s3", "~> 1.89"
-  spec.add_dependency "google-cloud-storage", "~> 1.30"
+  spec.add_dependency "aws-sdk-s3", "~> 1.103"
+  spec.add_dependency "google-cloud-storage", "~> 1.34"
   spec.add_dependency "mini_magick", "~> 4.11"
 
   # Security Dependencies
-  spec.add_dependency "phcdevworks_accounts", "~> 3.2"
+  spec.add_dependency "phcdevworks_accounts", "~> 3.3"
 
   # Development Dependencies
-  spec.add_development_dependency "factory_bot_rails", "~> 6.1"
-  spec.add_development_dependency "rspec-rails", "~> 4.1"
-  spec.add_development_dependency "spring", "~> 2.1"
+  spec.add_development_dependency "factory_bot_rails", "~> 6.2"
+  spec.add_development_dependency "rspec-rails", "~> 5.0"
+  spec.add_development_dependency "spring", "~> 3.0"
   spec.add_development_dependency "spring-commands-rspec", "~> 1.0"
   spec.add_development_dependency "sqlite3", "~> 1.4"
 
