@@ -10,7 +10,7 @@
     <!-- SEO and Site Description -->
 	<meta charset="utf-8">
 	<title><%= yield(:phc_seo_title) %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta name="description" content="<%= yield(:phc_seo_description) %>">
     <!-- SEO and Site Description -->
 
@@ -20,47 +20,54 @@
     <!-- Rails Security Tags -->
 
     <!-- CSS Styles -->
-    <%= stylesheet_link_tag "phcthemes_admin_panel_pack_coloradmin", media: "all" %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <%= stylesheet_link_tag "coloradmin/default/phcthemes_admin_panel_pack_coloradmin", media: "all" %>
     <!-- CSS Styles -->
-
-    <!-- JavaScript -->
-    <%= javascript_include_tag "phcthemes_admin_panel_pack_coloradmin" %>
-    <!-- JavaScript -->
 
 </head>
 <body>
 
-    <!-- Page Container -->
-    <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- -PHCDev- Page Container -->
+    <div id="app" class="app app-header-fixed app-sidebar-fixed app-with-wide-sidebar">
 
-        <!-- Page Header -->
-        <div id="header" class="header navbar-default">
+        <!-- -PHCDev- Page Container - Header -->
+        <div id="header" class="app-header">
             <%= render "layouts/phcdevworks_accounts_stripe/components/backend/navigation/top_menu" %>
         </div>
-        <!-- Page Header -->
+        <!-- -PHCDev- Page Container - Header -->
 
-        <!-- Page Sidebar -->
-        <div id="sidebar" class="sidebar">
+        <!-- -PHCDev- Page Container - Sidebar -->
+        <div id="sidebar" class="app-sidebar" data-disable-slide-animation="true">
             <%= render "layouts/phcdevworks_accounts_stripe/components/backend/sidebars/side_menu" %>
         </div>
-        <div class="sidebar-bg"></div>
-        <!-- Page Sidebar -->
+        <div class="app-sidebar-bg"></div>
+        <div class="app-sidebar-mobile-backdrop"><a href="#" data-dismiss="app-sidebar-mobile" class="stretched-link"></a></div>
+        <!-- -PHCDev- Page Container - Sidebar -->
 
-        <!-- Page Content -->
-        <div id="content" class="content">
-            <%= render "phcdevworks_notifications/bootstrap/notifications" %>
-            <%= yield %>
+        <!-- -PHCDev- Page Container - Content -->
+        <div id="app" class="app app-content-full-height">
+            <div id="content" class="app-content d-flex flex-column p-0">
+                <!-- -PHCDev- Page Container - Main -->
+                <div class="app-content-padding flex-grow-1 overflow-hidden" data-scrollbar="true" data-height="100%">
+                    <%= render "phcdevworks_notifications/bootstrap/notifications" %>
+                    <%= yield %>
+                </div>
+                <!-- -PHCDev- Page Container - Main -->
+                <!-- -PHCDev- Page Container - Footer -->
+                <div id="footer" class="app-footer m-0">
+                    <%= render "layouts/phcdevworks_accounts_stripe/components/backend/footer/footer" %>
+                </div>
+                <!-- -PHCDev- Page Container - Footer -->
+            </div>
         </div>
-        <!-- Page Content -->
-
-        <!-- Footer Content -->
-        <div id="footer" class="footer mb-4">
-            <%= render "layouts/phcdevworks_accounts_stripe/components/backend/footer/footer" %>
-        </div>
-        <!-- Footer Content -->
+        <!-- -PHCDev- Page Container - Content -->
 
     </div>
-    <!-- Page Container -->
+    <!-- -PHCDev- Page Container -->
+
+    <!-- JavaScript -->
+    <%= javascript_include_tag "coloradmin/phcthemes_admin_panel_pack_coloradmin" %>
+    <!-- JavaScript -->
 
 </body>
 </html>

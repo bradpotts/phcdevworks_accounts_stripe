@@ -12,7 +12,6 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
-require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -23,6 +22,9 @@ require "phcdevworks_accounts_stripe"
 module TestApp
   class Application < Rails::Application
     config.load_defaults Rails::VERSION::STRING.to_f
+
+    # For compatibility with applications that use this config
+    config.action_controller.include_all_helpers = false
 
     # Configuration for the application, engines, and railties goes here.
     #

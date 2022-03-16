@@ -1,387 +1,529 @@
-<!-- -PHC- Sidebar for PHCDevworks Engines -->
-<div data-scrollbar="true" data-height="100%">
+<!-- -PHCDev- Page Container - Sidebar -->
+<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+    <div class="menu">
 
-    <!-- -PHC- Sidebar - User Profile Menu -->
-    <ul class="nav">
-        <% if current_user %>
-            <li class="nav-profile">
-                <a href="javascript:;" data-toggle="nav-profile">
-                    <div class="cover with-shadow"></div>
-                    <div class="image">
+        <!-- -PHCDev- Page Container - Sidebar - Profile -->
+        <div class="menu-profile">
+            <% if current_user %>
+                <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
+                    <div class="menu-profile-cover with-shadow"></div>
+                    <div class="menu-profile-image">
                         <%= image_tag current_user.gravatar_url %>
                     </div>
-                    <div class="info">
-                        <b class="caret pull-right"></b>
-                        <%= current_user.firstname + " " + current_user.lastname  %>
+                    <div class="menu-profile-info">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <%= current_user.firstname + " " + current_user.lastname  %>
+                            </div>
+                            <div class="menu-caret ms-auto"></div>
+                        </div>
                         <small><%= current_user.username %></small>
                     </div>
                 </a>
-            </li>
-            <li>
-                <ul class="nav nav-profile">
-                    <li>
-                        <%= link_to phcdevworks_accounts.edit_user_registration_path do %>
-                            <i class="fad fa-cogs"></i> Account Settings
-                        <% end %>
-                    </li>
-                    <li>
-                        <%= link_to phcdevworks_accounts.destroy_user_session_path, method: :delete do %>
-                            <i class="fad fa-sign-out-alt"></i> Logout
-                        <% end %>
-                    </li>
-                </ul>
-            </li>
-        <% end %>
-    </ul>
-    <!-- -PHC- Sidebar - User Profile Menu -->
-    
-    <!-- -PHC- Sidebar - Sidebar Navigation -->
-    <ul class="nav">
-
-        <% if defined?phcdevworks_press %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Press -->
-            <li class="nav-header">Articles & Blogging</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-newspaper"></i>
-                    <span>Blog Articles</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_press/article/posts") %>"><%= link_to("Article Index", phcdevworks_press.article_posts_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_press/article/posts#new") %>"><%= link_to("Add a New Aritcle", phcdevworks_press.new_article_post_path) %></li>
-                </ul>
-            </li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-star-half"></i>
-                    <span>Review Articles</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_press/review/posts") %>"><%= link_to("Reviews Index", phcdevworks_press.review_posts_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_press/review/posts#new") %>"><%= link_to("Add a New Review", phcdevworks_press.new_review_post_path) %></li>
-                </ul>
-            </li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-th-list"></i>
-                    <span>List Articles</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_press/list/posts") %>"><%= link_to("Lists Index", phcdevworks_press.list_posts_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_press/list/posts#new") %>"><%= link_to("Add a New List", phcdevworks_press.new_list_post_path) %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Press -->
-        <% end %>
-
-        <% if defined?phcdevworks_portfolio %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Portfolio -->
-            <li class="nav-header">Portfolio</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-briefcase"></i>
-                    <span>Project List</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_portfolio/project/posts") %>"><%= link_to("Project Index", phcdevworks_portfolio.project_posts_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_portfolio/project/posts#new") %>"><%= link_to("New Project", phcdevworks_portfolio.new_project_post_path) %></li>
-                </ul>
-            </li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-folders"></i>
-                    <span>Project Types</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_portfolio/project/posts") %>"><%= link_to("Project Type", phcdevworks_portfolio.project_types_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_portfolio/project/posts#new") %>"><%= link_to("New Types", phcdevworks_portfolio.new_project_type_path) %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Portfolio -->
-        <% end %>
-
-        <% if defined?phcdevworks_tutorials %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Tutorials -->
-            <li class="nav-header">Tutorial Posts</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-chalkboard-teacher"></i>
-                    <span>Tutorial Posts</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_tutorials/tutorials/posts") %>"><%= link_to "Tutorial Index", phcdevworks_tutorials.tutorial_posts_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_tutorials/tutorials/posts#new") %>"><%= link_to "New Tutorial", phcdevworks_tutorials.new_tutorial_post_path %></li>
-                </ul>
-            </li>
-            <li class="nav-header">Command Lists & Items</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-terminal"></i>
-                    <span>Command Lists</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_tutorials/command/posts") %>"><%= link_to "List Index", phcdevworks_tutorials.command_posts_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_tutorials/command/posts#new") %>"><%= link_to "New List", phcdevworks_tutorials.new_command_post_path %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Tutorials -->
-        <% end %>
-
-        <% if defined?phcdevworks_members %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Members -->
-            <li class="nav-header">Membership Manager</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-users"></i>
-                    <span>Member"s Data</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_members/member/profiles") %>"><%= link_to("Profile Index", phcdevworks_members.member_profiles_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_members/member/profiles#new") %>"><%= link_to("New Member Profile", phcdevworks_members.new_member_profile_path) %></li>
-                </ul>
-            </li>
-            <li class="nav-header">Member"s Directory</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-list-alt"></i>
-                    <span>Member"s Directory</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_members/modules/categories") %>"><%= link_to("Directory Index", phcdevworks_members.directory_categories_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_members/modules/categories#new") %>"><%= link_to("New Directory Listing", phcdevworks_members.new_directory_category_path) %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Members -->
-        <% end %>
-
-        <% if defined?phcdevworks_scripts %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Scripts -->
-            <li class="nav-header">Script CDN Listings</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-laptop-code"></i>
-                    <span>Script Posts</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_scripts/script/listings") %>"><%= link_to "All Script Listings", phcdevworks_scripts.script_listings_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_scripts/script/listings#new") %>"><%= link_to "Add a New Listing", phcdevworks_scripts.new_script_listing_path %></li>
-                </ul>
-            </li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-sitemap"></i>
-                    <span>Script Extras</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_scripts/script/authors") %>"><%= link_to "Script Authors", phcdevworks_scripts.script_authors_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_scripts/script/extensions") %>"><%= link_to "Script Extensions", phcdevworks_scripts.script_extensions_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_scripts/script/versions") %>"><%= link_to "Script Versions", phcdevworks_scripts.script_versions_path %></li>
-                </ul>
-            </li>
-            <li class="nav-header">Code Snippets</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-code"></i>
-                    <span>Code Snippets</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_scripts/script/posts") %>"><%= link_to "Snippet Index", phcdevworks_scripts.snippet_posts_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_scripts/script/posts#new") %>"><%= link_to "New Snippet", phcdevworks_scripts.new_snippet_post_path %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Scripts -->
-        <% end %>
-
-        <% if defined?phcdevworks_real_estate %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks RealEstate -->
-            <li class="nav-header">Property Listings</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-home-lg"></i>
-                    <span>Property Listings</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_real_estate/property/listings") %>"><%= link_to "Listing Index", phcdevworks_real_estate.property_listings_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_real_estate/property/listings#new") %>"><%= link_to "New Listing", phcdevworks_real_estate.new_property_listing_path %></li>
-                </ul>
-            </li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-list-alt"></i>
-                    <span>Listing Features</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_real_estate/property/listings") %>"><%= link_to "Features Index", phcdevworks_real_estate.property_features_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_real_estate/property/listings#new") %>"><%= link_to "New Features", phcdevworks_real_estate.new_property_feature_path %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks RealEstate -->
-        <% end %>
-
-        <% if defined?phcdevworks_core_modules %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Core Modules -->
-            <li class="nav-header">Categories</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-sitemap"></i>
-                    <span>Categories</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_core_modules/post/categories") %>"><%= link_to("Category Index", phcdevworks_core_modules.post_categories_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_core_modules/post/categories#new") %>"><%= link_to("New Category", phcdevworks_core_modules.new_post_category_path) %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Core Modules -->
-        <% end %>
-
-        <% if defined?phcdevworks_core_modules %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Core Modules -->
-            <li class="nav-header">Marketing</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-link"></i>
-                    <span>Affiliate Links</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_core_modules/affiliate/links") %>"><%= link_to("Affiliate Link Index", phcdevworks_core_modules.affiliate_links_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_core_modules/affiliate/links#new") %>"><%= link_to("New Affiliate Link", phcdevworks_core_modules.new_affiliate_link_path) %></li>
-                </ul>
-            </li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-analytics"></i>
-                    <span>Search Optimization</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_core_modules/marketing/optimizations") %>"><%= link_to("SEO Data Index", phcdevworks_core_modules.marketing_optimizations_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_core_modules/marketing/optimizations#new") %>"><%= link_to("Add SEO Data", phcdevworks_core_modules.new_marketing_optimization_path) %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Core Modules -->
-        <% end %>
-
-        <% if current_user and current_user.admin? %>
-            <li class="nav-header">Administration</li>
-            <% if defined?phcdevworks_accounts_stripe and current_user.admin? %>
-                <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fab fa-cc-visa"></i>
-                        <span>Accounting</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/subscriptions#admin_subscription_list") %>"><%= link_to("Invoices", phcdevworks_accounts_stripe.admin_invoices_path) %></li>
-                        <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/subscriptions#admin_subscription_list") %>"><%= link_to("Subscriptions", phcdevworks_accounts_stripe.admin_subscriptions_path) %></li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fad fa-money-check-alt"></i>
-                        <span>Services</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/products#admin_products_list") %>"><%= link_to("Product List", phcdevworks_accounts_stripe.admin_products_path) %></li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a href="javascript:;">
-                        <b class="caret"></b>
-                        <i class="fad fa-users"></i>
-                        <span>Customers</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/customers#admin_customer_list") %>"><%= link_to("Customer List", phcdevworks_accounts_stripe.admin_customers_path) %></li>
-                    </ul>
-                </li>
-                <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->
             <% end %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCAccounts Admin Options -->
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-user-lock"></i>
-                    <span>User Logins</span>
+        </div>
+        <!-- -PHCDev- Page Container - Sidebar - Profile -->
+
+        <!-- -PHCDev- Page Container - Sidebar - Profile - Menu -->
+        <div id="appSidebarProfileMenu" class="collapse">
+            <div class="menu-item pt-5px">
+                <%= link_to phcdevworks_accounts_devise.edit_user_registration_path, class: "menu-link" do %>
+                    <div class="menu-icon"><i class="fad fa-cogs"></i></div>
+                    <div class="menu-text">Account Settings</div>
+                <% end %>
+                <%= link_to phcdevworks_accounts_devise.destroy_user_session_path, method: :delete, class: "menu-link" do %>
+                    <div class="menu-icon"><i class="fad fa-sign-out-alt"></i></div>
+                    <div class="menu-text">Logout</div>
+                <% end %>
+            </div>
+            <div class="menu-divider m-0"></div>
+        </div>
+        <!-- -PHCDev- Page Container - Sidebar - Profile - Menu -->
+
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCMembers -->
+        <% if defined?phcdevworks_members %>
+            <div class="menu-header">PHCMembers</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">people</i></div>
+                    <div class="menu-text">Membership Manager</div>
+                    <div class="menu-caret"></div>
                 </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts/admin/users") %>"><%= link_to "User List", phcdevworks_accounts.admin_users_all_path %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCAccounts Admin Options -->
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Member's Data</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_members/member/profiles") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_members/member/profiles", "Index") %>">
+                                <%= link_to phcdevworks_members.member_profiles_path, class: "menu-link" do %>
+                                    <div class="menu-text">Member Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_members/member/profiles", "New") %>">
+                                <%= link_to phcdevworks_members.new_member_profile_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Member</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Member's Directory</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_members/modules/categories") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_members/modules/categories", "Index") %>">
+                                <%= link_to phcdevworks_members.directory_categories_path, class: "menu-link" do %>
+                                    <div class="menu-text">Category Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_members/modules/categories", "New") %>">
+                                <%= link_to phcdevworks_members.new_directory_category_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Category</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCMembers -->
 
-        <li class="nav-header">Your Account</li>
-        <% if defined?phcdevworks_accounts_stripe and current_user %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-money-check-alt"></i>
-                    <span>Your Subscription</span>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCPress -->
+        <% if defined?phcdevworks_press %>
+            <div class="menu-header">PHCPress</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">newspaper</i></div>
+                    <div class="menu-text">Blogging</div>
+                    <div class="menu-caret"></div>
                 </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/subscriptions#admin_subscription_list") %>"><%= link_to("Your Subscription", phcdevworks_accounts_stripe.user_subscription_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/products#admin_product_list") %>"><%= link_to("Switch Subscriptions", phcdevworks_accounts_stripe.user_subscription_path) %></li>
-                </ul>
-            </li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-file-invoice"></i>
-                    <span>Your Invoices</span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/user/invoices#admin_customer_list") %>"><%= link_to("Current Invoice", phcdevworks_accounts_stripe.user_invoices_path) %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts_stripe/user/invoices#admin_customer_list") %>"><%= link_to("Past Invoices", phcdevworks_accounts_stripe.admin_customers_path) %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCDevworks Accounts Stripe -->
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Article Posts</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_press/article/posts") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_press/article/posts", "Index") %>">
+                                <%= link_to phcdevworks_press.article_posts_path, class: "menu-link" do %>
+                                    <div class="menu-text">All Articles</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_press/article/posts", "New") %>">
+                                <%= link_to phcdevworks_press.new_article_post_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Article</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCPress -->
 
-        <% if current_user %>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCAccounts User Options -->
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fad fa-user"></i>
-                    <span>Login Settings</span>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCPortfolio -->
+        <% if defined?phcdevworks_portfolio %>
+            <div class="menu-header">PHCPortfolio</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">business_center</i></div>
+                    <div class="menu-text">Portfolio & Projects</div>
+                    <div class="menu-caret"></div>
                 </a>
-                <ul class="sub-menu">
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts/user/edit") %>"><%= link_to "Settings", phcdevworks_accounts.edit_user_registration_path %></li>
-                    <li class="<%= phc_menu_active_controller("phcdevworks_accounts/user/new") %>"><%= link_to "Logout", phcdevworks_accounts.destroy_user_session_path, method: :delete %></li>
-                </ul>
-            </li>
-            <!-- -PHC- Sidebar - Sidebar Navigation - PHCAccounts User Options -->
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Project Portfolio</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_portfolio/project/posts") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_portfolio/project/posts", "Index") %>">
+                                <%= link_to phcdevworks_portfolio.project_posts_path, class: "menu-link" do %>
+                                    <div class="menu-text">Project Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_portfolio/project/posts", "New") %>">
+                                <%= link_to phcdevworks_portfolio.new_project_post_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Project</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Project Types</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_portfolio/project/types") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_portfolio/project/types", "Index") %>">
+                                <%= link_to phcdevworks_portfolio.project_types_path, class: "menu-link" do %>
+                                    <div class="menu-text">Project Types</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_portfolio/project/types", "New") %>">
+                                <%= link_to phcdevworks_tutorials.new_project_type_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Project Type</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCPortfolio -->
 
-        <!-- -PHC- Sidebar - Sidebar Minifier -->
-        <li>
-            <a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify">
-                <i class="fa fa-angle-double-left"></i>
-            </a>
-        </li>
-        <!-- -PHC- Sidebar - Sidebar Minifier -->
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCRealEstate -->
+        <% if defined?phcdevworks_real_estate %>
+            <div class="menu-header">PHCRealEstate</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">holiday_village</i></div>
+                    <div class="menu-text">Property Listings</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Property Listings</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_real_estate/property/listings") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_real_estate/property/listings", "Index") %>">
+                                <%= link_to phcdevworks_real_estate.property_listings_path, class: "menu-link" do %>
+                                    <div class="menu-text">Property Listings</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_real_estate/property/listings", "New") %>">
+                                <%= link_to phcdevworks_real_estate.new_property_listing_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Listing</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Project Types</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_real_estate/property/features") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_real_estate/property/features", "Index") %>">
+                                <%= link_to phcdevworks_real_estate.property_features_path, class: "menu-link" do %>
+                                    <div class="menu-text">Property Features List</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_real_estate/property/features", "New") %>">
+                                <%= link_to phcdevworks_real_estate.new_property_feature_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Property Feature</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCRealEstate -->
 
-    </ul>
-    <!-- -PHC- Sidebar - Sidebar Navigation -->
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCScripts -->
+        <% if defined?phcdevworks_scripts %>
+            <div class="menu-header">PHCScripts</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">code</i></div>
+                    <div class="menu-text">Script CDN Listing</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Script Listing</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_scripts/script/listings") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_scripts/script/listings", "Index") %>">
+                                <%= link_to phcdevworks_scripts.script_listings_path, class: "menu-link" do %>
+                                    <div class="menu-text">Script Listings</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_scripts/script/listings", "New") %>">
+                                <%= link_to phcdevworks_scripts.new_script_listing_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Listing</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Script Listing Extras</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_scripts/script/authors") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_scripts/script/authors", "Index") %>">
+                                <%= link_to phcdevworks_scripts.script_authors_path, class: "menu-link" do %>
+                                    <div class="menu-text">Script Authors</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_scripts/script/extensions", "Index") %>">
+                                <%= link_to phcdevworks_scripts.script_extensions_path, class: "menu-link" do %>
+                                    <div class="menu-text">Script Extensions</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_scripts/script/versions", "Index") %>">
+                                <%= link_to phcdevworks_scripts.script_versions_path, class: "menu-link" do %>
+                                    <div class="menu-text">Script Versions</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Code Snippets</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_scripts/snippet/posts") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_scripts/snippet/posts", "Index") %>">
+                                <%= link_to phcdevworks_scripts.snippet_posts_path, class: "menu-link" do %>
+                                    <div class="menu-text">Code Snippets</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_scripts/snippet/posts", "New") %>">
+                                <%= link_to phcdevworks_scripts.new_snippet_post_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Code Snippet</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCScripts -->
 
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCTutorials -->
+        <% if defined?phcdevworks_tutorials %>
+            <div class="menu-header">PHCTutorials</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">school</i></div>
+                    <div class="menu-text">Tutorials</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Tutorials</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_tutorials/tutorials/posts") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_tutorials/tutorials/posts", "Index") %>">
+                                <%= link_to phcdevworks_tutorials.tutorial_posts_path, class: "menu-link" do %>
+                                    <div class="menu-text">Tutorial Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_tutorials/tutorials/posts", "New") %>">
+                                <%= link_to phcdevworks_tutorials.new_tutorial_post_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Tutorial</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Command Lists</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_tutorials/command/posts") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_tutorials/command/posts", "Index") %>">
+                                <%= link_to phcdevworks_tutorials.command_posts_path, class: "menu-link" do %>
+                                    <div class="menu-text">Command List Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_tutorials/command/posts", "New") %>">
+                                <%= link_to phcdevworks_tutorials.new_command_post_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Command List</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCTutorials -->
+
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCCoreModules -->
+        <% if defined?phcdevworks_core_modules %>
+            <div class="menu-header">Categories</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">view_list</i></div>
+                    <div class="menu-text">Categories</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Categories</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_core_modules/post/categories") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_core_modules/post/categories", "Index") %>">
+                                <%= link_to phcdevworks_core_modules.post_categories_path, class: "menu-link" do %>
+                                    <div class="menu-text">Category Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_core_modules/post/categories", "New") %>">
+                                <%= link_to phcdevworks_core_modules.new_post_category_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Category</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-header">Marketing</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">query_stats</i></div>
+                        <div class="menu-text">Search Optimization</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">SEO Data</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_core_modules/post/categories") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_core_modules/marketing/optimizations", "Index") %>">
+                                <%= link_to phcdevworks_core_modules.marketing_optimizations_path, class: "menu-link" do %>
+                                    <div class="menu-text">SEO Data Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_core_modules/marketing/optimizations", "New") %>">
+                                <%= link_to phcdevworks_core_modules.new_marketing_optimization_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add New SEO Data</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">link</i></div>
+                    <div class="menu-text">Affiliate Linking</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Affiliate Links</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_core_modules/affiliate/links") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_core_modules/affiliate/links", "Index") %>">
+                                <%= link_to phcdevworks_core_modules.affiliate_links_path, class: "menu-link" do %>
+                                    <div class="menu-text">Affiliate Link Index</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_core_modules/affiliate/links", "New") %>">
+                                <%= link_to phcdevworks_core_modules.new_affiliate_link_path, class: "menu-link" do %>
+                                    <div class="menu-text">Add a New Affiliate Link</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCCoreModules -->
+
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCAccounts -->
+        
+        <% if defined?phcdevworks_accounts_stripe and current_user.admin? %>
+            <div class="menu-header">Subscription Administration</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">payments</i></div>
+                    <div class="menu-text">Stripe</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Accounting</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/subscriptions") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_accounts_stripe/admin/subscriptions", "admin_subscription_list") %>">
+                                <%= link_to phcdevworks_accounts_stripe.admin_invoices_path, class: "menu-link" do %>
+                                    <div class="menu-text">Invoices</div>
+                                <% end %>
+                            </div>
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_accounts_stripe/admin/subscriptions", "admin_subscription_list") %>">
+                                <%= link_to phcdevworks_accounts_stripe.admin_subscriptions_path, class: "menu-link" do %>
+                                    <div class="menu-text">Subscriptions</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Services & Products</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/products") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_accounts_stripe/admin/products", "admin_products_list") %>">
+                                <%= link_to phcdevworks_accounts_stripe.admin_products_path, class: "menu-link" do %>
+                                    <div class="menu-text">Product List</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Subscribers</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_accounts_stripe/admin/customers") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_accounts_stripe/admin/customers", "admin_customer_list") %>">
+                                <%= link_to phcdevworks_accounts_stripe.admin_customers_path, class: "menu-link" do %>
+                                    <div class="menu-text">Subscriber List</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <% if current_user and current_user.admin? %>
+            <div class="menu-header">Login Administration</div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="material-icons">admin_panel_settings</i></div>
+                    <div class="menu-text">Auth Administration</div>
+                    <div class="menu-caret"></div>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-text">Users</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu <%= phc_menu_active_controller("phcdevworks_accounts_devise/admin/users") %>">
+                            <div class="menu-item <%= phc_menu_active_action_controller("phcdevworks_accounts_devise/admin/users", "admin_subscription_list") %>">
+                                <%= link_to phcdevworks_accounts_devise.admin_users_all_path, class: "menu-link" do %>
+                                    <div class="menu-text">User List</div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <!-- -PHCDev- Page Container - Sidebar - Navigation - PHCAccounts -->
+
+    </div>
 </div>
-<!-- -PHC- Sidebar for PHCDevworks Engines -->
+<!-- -PHCDev- Page Container - Sidebar -->
