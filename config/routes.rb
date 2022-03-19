@@ -11,7 +11,4 @@ PhcdevworksAccountsStripe::Engine.routes.draw do
     match "/admin/products", to: "admin/products#admin_products_list", via: "get"
     match "/admin/subscriptions", to: "admin/subscriptions#admin_subscription_list", via: "get"
 
-    # Mount Routes
-    mount PhcdevworksAccounts::Engine, :at => '/'
-
 end

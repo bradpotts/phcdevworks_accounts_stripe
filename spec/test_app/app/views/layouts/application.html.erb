@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>TestApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+  
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application" %>
+    <!-- CSS Styles -->
+    <%= stylesheet_link_tag "coloradmin/default/phcthemes_admin_panel_pack_coloradmin", media: "all" %>
+    <!-- CSS Styles -->
+  
   </head>
 
   <body>
+
     <%= yield %>
+  
   </body>
+  
+  <!-- JavaScript -->
+  <%= javascript_include_tag "coloradmin/phcthemes_admin_panel_pack_coloradmin" %>
+  <!-- JavaScript -->
+
 </html>

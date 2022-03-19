@@ -7,6 +7,7 @@ gemspec
 gem "sqlite3"
 
 gem "sprockets-rails"
+gem 'phcdevworks_accounts_devise', '~> 0.1.0.pre.beta'
 
 # Start debugger with binding.b [https://github.com/ruby/debug]
 # gem "debug", ">= 1.0.0"

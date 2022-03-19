@@ -1,3 +1,2 @@
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link phcdevworks_accounts_stripe_manifest.js
+//= link coloradmin/default/phcthemes_admin_panel_pack_coloradmin.css
+//= link coloradmin/phcthemes_admin_panel_pack_coloradmin.js
