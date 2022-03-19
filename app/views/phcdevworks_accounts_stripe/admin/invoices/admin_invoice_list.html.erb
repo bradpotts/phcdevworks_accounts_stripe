@@ -1,89 +1,81 @@
-<!-- PHCTitleSEO Title Variables -->
+<!-- -PHCDev- Title System -->
 <% phc_title "Invoice Manager" %>
 <% phc_title_tagline "Stripe Invoice List" %>
 <% phc_breadcrumb_one "Home" %>
 <% phc_breadcrumb_two yield(:phc_title_tagline) %>
-<!-- PHCTitleSEO Title Variables -->
+<!-- -PHCDev- Title System -->
 
-<!-- Page Bradcrumbs -->
-<ol class="breadcrumb pull-right">
+<!-- -PHCDev- Page Bradcrumbs -->
+<ol class="breadcrumb float-xl-end">
 	<li class="breadcrumb-item"><%= yield(:phc_breadcrumb_one) %></li>
 	<li class="breadcrumb-item active"><%= yield(:phc_breadcrumb_two) %></li>
 </ol>
-<!-- Page Bradcrumbs -->
+<!-- -PHCDev- Page Bradcrumbs -->
 
-<!-- Page Header -->
-<h2 class="page-header"><%= yield(:phc_title) %></h2>
-<!-- Page Header -->
+<!-- -PHCDev- Page Header -->
+<h1 class="page-header"><%= yield(:phc_title) %></h1>
+<!-- -PHCDev- Page Header -->
 
-<!-- Page Content -->
-<div class="row">
-	<div class="col-lg-12">
+<!-- -PHCDev- Panel -->
+<div class="panel panel-inverse">
 
-		<!-- Panel -->
-		<div class="panel panel-inverse">
+	<!-- -PHCDev- Panel - Heading -->
+	<div class="panel-heading">
+		<h4 class="panel-title"><%= yield(:phc_title_tagline) %></h4>
+	</div>
+	<!-- -PHCDev- Panel - Heading -->
 
-			<!-- Panel - Heading -->
-            <div class="panel-heading">
-                <h4 class="panel-title"><%= yield(:phc_title_tagline) %></h4>
-            </div>
-			<!-- Panel - Heading -->
+	<!-- -PHCDev- Panel - Body -->
+	<div class="panel-body">
 
-			<!-- Panel - Body -->
-			<div class="panel-body">
+		<!-- -PHCDev- Index - Table -->
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered">
 
-				<!-- Index - Table -->
-				<div class="table-responsive">
-					<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Status</th>
+						<th>Account Name</th>
+						<th>Invoice Amount</th>
+						<th>Invoice Paid</th>
+						<th>Invoice Due</th>
+						<th>Due Date</th>
+						<th>Invoice PDF Download</th>
+						<th>Invoice Link</th>
+					</tr>
+				</thead>
 
-                        <thead>
-                            <tr>
-                                <th>Status</th>
-                                <th>Account Name</th>
-                                <th>Invoice Amount</th>
-                                <th>Invoice Paid</th>
-                                <th>Invoice Due</th>
-                                <th>Due Date</th>
-                                <th>Invoice PDF Download</th>
-                                <th>Invoice Link</th>
-                            </tr>
-                        </thead>
+				<tbody>
+					<% @admin_invoice_list.each do |admin_invoice| %>
+						<tr>
+							<td><%= admin_invoice.status.capitalize %></td>
+							<td><%= admin_invoice.account_name %></td>
+							<td><%= number_to_currency(admin_invoice.amount_due/100) %></td>
+							<td><%= number_to_currency(admin_invoice.amount_paid/100) %></td>
+							<td><%= number_to_currency(admin_invoice.amount_remaining/100) %></td>
+							<td><%= Time.at(admin_invoice.due_date).to_datetime.strftime("%B %d, %Y") %></td>
+							<td>
+								<i class="fad fa-external-link"></i>
+								<%= link_to admin_invoice.invoice_pdf, target: "_blank" do %>
+									Invoice #: <%= admin_invoice.number %>
+								<% end %>
+							</td>
+							<td>
+								<i class="fad fa-external-link"></i>
+								<%= link_to admin_invoice.hosted_invoice_url, target: "_blank" do %>
+									Invoice #: <%= admin_invoice.number %>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
 
-                        <tbody>
-                            <% @admin_invoice_list.each do |admin_invoice| %>
-                                <tr>
-                                    <td><%= admin_invoice.status.capitalize %></td>
-                                    <td><%= admin_invoice.account_name %></td>
-                                    <td><%= number_to_currency(admin_invoice.amount_due/100) %></td>
-                                    <td><%= number_to_currency(admin_invoice.amount_paid/100) %></td>
-                                    <td><%= number_to_currency(admin_invoice.amount_remaining/100) %></td>
-                                    <td><%= Time.at(admin_invoice.due_date).to_datetime.strftime("%B %d, %Y") %></td>
-                                    <td>
-                                    	<i class="fad fa-external-link"></i>
-                                    	<%= link_to admin_invoice.invoice_pdf, target: "_blank" do %>
-											Invoice #: <%= admin_invoice.number %>
-                                    	<% end %>
-                                    </td>
-                                    <td>
-                                    	<i class="fad fa-external-link"></i>
-                                    	<%= link_to admin_invoice.hosted_invoice_url, target: "_blank" do %>
-											Invoice #: <%= admin_invoice.number %>
-                                    	<% end %>
-                                    </td>
-                               </tr>
-					        <% end %>
-						</tbody>
-
-					</table>
-				</div>
-				<!-- Index - Table -->
-
-			</div>
-			<!-- Panel - Body -->
-
+			</table>
 		</div>
-		<!-- Panel -->
+		<!-- -PHCDev- Index - Table -->
 
 	</div>
+	<!-- -PHCDev- Panel - Body -->
+
 </div>
-<!-- Page Content -->
+<!-- -PHCDev- Panel -->

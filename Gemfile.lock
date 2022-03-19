@@ -241,7 +241,7 @@ GEM
     paper_trail (12.3.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
-    phcdevworks_accounts_devise (0.1.1.pre.beta)
+    phcdevworks_accounts_devise (0.1.2.pre.beta)
       aws-sdk-s3 (~> 1.113)
       devise (~> 4.8)
       friendly_id (~> 5.4)
@@ -394,7 +394,7 @@ PLATFORMS
 
 DEPENDENCIES
   factory_bot_rails (~> 6.2)
-  phcdevworks_accounts_devise (~> 0.1.1.pre.beta)
+  phcdevworks_accounts_devise (~> 0.1.2.pre.beta)
   phcdevworks_accounts_stripe!
   rspec-rails (~> 5.0)
   spring (~> 3.0)
