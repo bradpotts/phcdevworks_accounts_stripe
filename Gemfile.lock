@@ -394,7 +394,7 @@ PLATFORMS
 
 DEPENDENCIES
   factory_bot_rails (~> 6.2)
-  phcdevworks_accounts_devise (~> 0.1.0.pre.beta)
+  phcdevworks_accounts_devise (~> 0.1.1.pre.beta)
   phcdevworks_accounts_stripe!
   rspec-rails (~> 5.0)
   spring (~> 3.0)
