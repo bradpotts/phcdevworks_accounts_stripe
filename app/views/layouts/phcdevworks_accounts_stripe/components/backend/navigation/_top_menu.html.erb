@@ -1,4 +1,4 @@
-<!-- -PHC- Topbar - Navigation Header -->
+<!-- -PHCDev- Topbar - Navigation Header -->
 <div class="navbar-header">
 
     <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
@@ -8,13 +8,13 @@
     </button>
 
     <%= link_to phcdevworks_accounts_devise.user_path, class: "navbar-brand" do %>
-        <strong>PHCDevworks</strong>Accounts
+        <span class="phc_dev_strong_plugin_logo">PHC</span><span class="phc_dev_light_plugin_logo">Devworks</span>
     <% end %>
 
 </div>
-<!-- -PHC- Topbar - Navigation Header -->
+<!-- -PHCDev- Topbar - Navigation Header -->
     
-<!-- -PHC- Topbar - Navigation Main -->
+<!-- -PHCDev- Topbar - Navigation Main -->
 <% if current_user %>
     <div class="navbar-nav">
         <div class="navbar-item navbar-user dropdown">
@@ -38,4 +38,4 @@
 <% end %>
 
 </div>
-<!-- -PHC- Topbar - Navigation Main -->
+<!-- -PHCDev- Topbar - Navigation Main -->
