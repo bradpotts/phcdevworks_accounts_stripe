@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
 
   # Helper Dependencies
   spec.add_dependency "phcdevworks_active_menus", "~> 3.0"
-  spec.add_dependency "phcdevworks_core", "~> 3.0"
+  spec.add_dependency "phcdevworks_core", "~> 4.0"
   spec.add_dependency "phcdevworks_notifications", "~> 3.1"
   spec.add_dependency "phcdevworks_titleseo", "~> 4.0"
 
