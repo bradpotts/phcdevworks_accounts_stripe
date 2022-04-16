@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    phcdevworks_accounts_stripe (1.0.4)
+    phcdevworks_accounts_stripe (1.1.0)
       aws-sdk-s3 (~> 1.113)
       devise (~> 4.8)
       friendly_id (~> 5.4)
@@ -91,7 +91,7 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     aws-eventstream (1.2.0)
-    aws-partitions (1.576.0)
+    aws-partitions (1.577.0)
     aws-sdk-core (3.130.1)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.525.0)
@@ -219,7 +219,7 @@ GEM
     paper_trail (12.3.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
-    phcdevworks_accounts_devise (1.0.1)
+    phcdevworks_accounts_devise (1.1.0)
       aws-sdk-s3 (~> 1.113)
       devise (~> 4.8)
       friendly_id (~> 5.4)
@@ -241,7 +241,7 @@ GEM
       phcthemes_admin_panel_pack (~> 5.1)
       phcthemes_web_theme_pack (~> 5.0)
       rails (~> 7.0)
-    phcdevworks_core (4.0.0)
+    phcdevworks_core (4.0.1)
       phcthemes_admin_panel_pack (~> 5.1)
       phcthemes_web_theme_pack (~> 5.0)
       rails (~> 7.0)
