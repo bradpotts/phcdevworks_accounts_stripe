@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   # Main Dependencies
   spec.add_dependency "rails", "~> 7.0"
   spec.add_dependency "jbuilder", "~> 2.11"
-  spec.add_dependency "paper_trail", "~> 12.1"
+  spec.add_dependency "paper_trail", "~> 12.3"
 
   # Theme Dependencies
   spec.add_dependency "phcthemes_admin_panel_pack", "~> 5.1"
@@ -42,18 +42,18 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mail_form", "~> 1.9"
 
   # Images & Service Support Dependencies
-  spec.add_dependency "aws-sdk-s3", "~> 1.113"
-  spec.add_dependency "google-cloud-storage", "~> 1.36"
+  spec.add_dependency "aws-sdk-s3", "~> 1.114"
+  spec.add_dependency "google-cloud-storage", "~> 1.37"
   spec.add_dependency "mini_magick", "~> 4.11"
 
   # Security & Payment Dependencies
   spec.add_dependency "devise", "~> 4.8"
-  spec.add_dependency "stripe", "~> 5.44"
+  spec.add_dependency "stripe", "~> 6.5"
 
   # Development Dependencies
   spec.add_development_dependency "factory_bot_rails", "~> 6.2"
-  spec.add_development_dependency "rspec-rails", "~> 5.0"
-  spec.add_development_dependency "spring", "~> 3.0"
+  spec.add_development_dependency "rspec-rails", "~> 5.1"
+  spec.add_development_dependency "spring", "~> 4.0"
   spec.add_development_dependency "spring-commands-rspec", "~> 1.0"
   spec.add_development_dependency "sqlite3", "~> 1.4"
 
